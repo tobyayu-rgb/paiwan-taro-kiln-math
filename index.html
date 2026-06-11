@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排灣石板窯的幾何奧秘 - 文化數學探索網</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header animate-fade-in">
+            <div class="logo-area">
+                <span class="tribal-pattern-icon">❖</span>
+                <div>
+                    <h1>排灣石板窯的幾何奧秘</h1>
+                    <p class="subtitle">文化數學跨領域探索網 (108課綱高年級實踐方案)</p>
+                </div>
+            </div>
+            <div class="badge-container">
+                <div class="badge" id="player-badge">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span id="badge-text">部落實習生</span>
+                </div>
+                <div class="score-display">
+                    <i class="fa-solid fa-fire text-orange"></i>
+                    <span>小米烤芋積分：<strong id="total-score">0</strong></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-nav animate-slide-up">
+            <button class="tab-btn active" onclick="switchTab('culture')">
+                <i class="fa-solid fa-book-open"></i> 文化故事
+            </button>
+            <button class="tab-btn" onclick="switchTab('builder')">
+                <i class="fa-solid fa-cubes"></i> 窯體積木搭建
+            </button>
+            <button class="tab-btn" onclick="switchTab('simulator')">
+                <i class="fa-solid fa-arrows-to-dot"></i> 芋頭裝窯模擬
+            </button>
+            <button class="tab-btn" onclick="switchTab('quiz')">
+                <i class="fa-solid fa-circle-question"></i> 數學大挑戰
+            </button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <main class="main-content">
+            <!-- TAB 1: CULTURE -->
+            <section id="culture-tab" class="tab-content active animate-fade-in">
+                <div class="grid-2col">
+                    <div class="card glass-card card-text">
+                        <div class="card-header">
+                            <span class="step-num">❖ 01</span>
+                            <h2>山林間的古老爐火：燒芋窯 (aradj)</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>在排灣族（Paiwan）的傳統生活裡，<strong>芋頭 (vasa)</strong> 是非常重要的傳統作物與主食之一。每年秋末採收完芋頭後，為了能長期保存作為上山打獵的乾糧或應對糧食匱乏，部落族人會合力搭建<strong>「燒芋窯」</strong>，將生芋頭烘烤兩三天去除水分，製作成輕巧美味的<strong>芋頭乾 (aradj)</strong>。</p>
+                            
+                            <p>傳統的燒芋窯是一座充滿幾何智慧的建築。窯的主體利用大自然中的<strong>石板</strong>堆砌而成。為了能夠順利排熱與排水，窯體設計成<strong>「前低後高」</strong>的坡度結構。烤台上方則鋪設竹竿，擺放生芋頭，下方燃燒木柴以慢火烘烤。</p>
+                            
+                            <blockquote class="tribal-quote">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <span>「看著烤窯的石板與木柴，裡面藏著大自然和祖先要教給我們的數學課。」</span>
+                                <cite>— 部落長老 vuvu</cite>
+                            </blockquote>
+
+                            <div class="cultural-tip">
+                                <h3>💡 vuvu 的烤芋排列智慧</h3>
+                                <p>在烤芋頭時，鋪在竹子上的芋頭不是隨便亂丟的，而是要依照：<strong>大、中、小、中、大、特大</strong> 的順序排列。這是因為中央頂部受熱快，擺放水分多、易熟的小芋頭；兩側和邊緣熱對流較慢，因此擺放需要長烘的大芋頭及特大芋頭。這樣的排列不僅能<strong>受熱均勻</strong>，還能<strong>最省木柴</strong>，是極具物理學與空間優化概念的部落實踐！</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card glass-card visual-card">
+                        <div class="carousel">
+                            <div class="slide active" id="slide1">
+                                <img src="assets/kiln.png" alt="排灣族傳統燒芋窯" class="visual-img">
+                                <div class="img-caption">傳統排灣族石板燒芋窯，利用天然石板前低後高堆砌而成。</div>
+                            </div>
+                            <div class="slide" id="slide2">
+                                <img src="assets/vuvu.png" alt="vuvu烤芋頭" class="visual-img">
+                                <div class="img-caption">部落長者 vuvu 依循傳統，仔細排列大中小芋頭。</div>
+                            </div>
+                            <div class="carousel-controls">
+                                <button class="carousel-btn" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+                                <span class="carousel-indicator">1 / 2</span>
+                                <button class="carousel-btn" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: BUILDER -->
+            <section id="builder-tab" class="tab-content animate-fade-in">
+                <div class="grid-2col">
+                    <div class="card glass-card canvas-card">
+                        <div class="card-header">
+                            <h2>窯體 3D 模型虛擬搭建</h2>
+                            <p>點擊網格以新增/移除石板積木，觀察體積與表面積的變化。</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <!-- 3D Canvas / Render Area -->
+                            <canvas id="builder-canvas"></canvas>
+                            <div class="canvas-hint">
+                                <span class="badge-hint"><i class="fa-solid fa-mouse-pointer"></i> 點擊網格增加積木</span>
+                                <span class="badge-hint"><i class="fa-solid fa-trash-can"></i> 按住 Shift 點擊移除積木</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card glass-card control-card">
+                        <div class="card-header">
+                            <h2>數學參數與搭建控制</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="preset-buttons">
+                                <button class="btn btn-primary" onclick="loadPreset('traditional')">
+                                    <i class="fa-solid fa-store"></i> 傳統石板窯 (前低後高)
+                                </button>
+                                <button class="btn btn-secondary" onclick="loadPreset('cube')">
+                                    <i class="fa-solid fa-cube"></i> 長方體簡化窯
+                                </button>
+                                <button class="btn btn-outline" onclick="clearGrid()">
+                                    <i class="fa-solid fa-rotate-left"></i> 清空重來
+                                </button>
+                            </div>
+
+                            <hr class="card-divider">
+
+                            <div class="calc-panel">
+                                <div class="calc-item">
+                                    <span class="calc-label"><i class="fa-solid fa-ruler-horizontal"></i> 窯體長度 (X軸)</span>
+                                    <span class="calc-val" id="val-length">0 格</span>
+                                </div>
+                                <div class="calc-item">
+                                    <span class="calc-label"><i class="fa-solid fa-ruler-vertical"></i> 窯體寬度 (Y軸)</span>
+                                    <span class="calc-val" id="val-width">0 格</span>
+                                </div>
+                                <div class="calc-item">
+                                    <span class="calc-label"><i class="fa-solid fa-arrows-up-to-line"></i> 最大高度 (Z軸)</span>
+                                    <span class="calc-val" id="val-height">0 格</span>
+                                </div>
+                                <div class="calc-item highlight-purple">
+                                    <span class="calc-label"><i class="fa-solid fa-cube"></i> 總積木數（體積）</span>
+                                    <span class="calc-val" id="val-volume">0 <small>立方公分</small></span>
+                                </div>
+                                <div class="calc-item highlight-orange">
+                                    <span class="calc-label"><i class="fa-solid fa-border-all"></i> 外顯表面積</span>
+                                    <span class="calc-val" id="val-surface">0 <small>平方公分</small></span>
+                                </div>
+                            </div>
+
+                            <div class="mode-toggle">
+                                <label class="switch-container">
+                                    <input type="checkbox" id="split-mode-checkbox" onchange="toggleSplitMode()">
+                                    <span class="slider round"></span>
+                                </label>
+                                <span class="toggle-text">開啟數學「切割法 / 填補法」視覺化解說</span>
+                            </div>
+
+                            <div class="explanation-box" id="split-explanation" style="display: none;">
+                                <h4>📐 複合體積剖析說明：</h4>
+                                <p>傳統石板窯具有前低後高的斜度：</p>
+                                <ul>
+                                    <li><strong class="color-prism-rect">■ 下半部（長方體）</strong>：體積 = 長 × 寬 × 低高度。</li>
+                                    <li><strong class="color-prism-tri">■ 上半部（直角三角柱）</strong>：體積 = 底面積 × 寬（其中側面底面積為 $\text{長} \times (\text{高差}) \div 2$）。</li>
+                                    <li><strong>總體積 = 下半部長方體 + 上半部三角柱</strong>。這就是數學上的<strong>「切割法」</strong>應用！</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: SIMULATOR -->
+            <section id="simulator-tab" class="tab-content id-simulator">
+                <div class="grid-2col">
+                    <div class="card glass-card simulator-left">
+                        <div class="card-header">
+                            <h2>窯體內部放芋空間（容積剖面）</h2>
+                            <p>將右側的芋頭，按照 vuvu 的智慧拖入下方適當的受熱位置。</p>
+                        </div>
+                        <div class="simulator-wrapper">
+                            <!-- Kiln slots drawing area -->
+                            <div class="kiln-cross-section">
+                                <div class="convection-waves" id="fire-waves"></div>
+                                <div class="kiln-roof-label">竹竿鋪設層 (Baking Bed)</div>
+                                <div class="slots-container" id="slots-container">
+                                    <!-- 6 slots representing left-to-right positions -->
+                                    <div class="slot" data-pos="0" id="slot-0"><span class="slot-hint">位置 1 (最左側)</span></div>
+                                    <div class="slot" data-pos="1" id="slot-1"><span class="slot-hint">位置 2</span></div>
+                                    <div class="slot" data-pos="2" id="slot-2"><span class="slot-hint">位置 3 (中央偏左)</span></div>
+                                    <div class="slot" data-pos="3" id="slot-3"><span class="slot-hint">位置 4 (中央偏右)</span></div>
+                                    <div class="slot" data-pos="4" id="slot-4"><span class="slot-hint">位置 5</span></div>
+                                    <div class="slot" data-pos="5" id="slot-5"><span class="slot-hint">位置 6 (最右側)</span></div>
+                                </div>
+                                <div class="kiln-bottom-label"><i class="fa-solid fa-fire animate-pulse text-orange"></i> 下方慢火加熱區</div>
+                            </div>
+                            
+                            <div class="game-controls">
+                                <button class="btn btn-primary btn-large" id="btn-fire" onclick="startBakingGame()">
+                                    <i class="fa-solid fa-fire-burner"></i> 開始點火烘烤！
+                                </button>
+                                <button class="btn btn-secondary" onclick="resetBakingGame()">
+                                    <i class="fa-solid fa-rotate-left"></i> 重置位置
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card glass-card simulator-right">
+                        <div class="card-header">
+                            <h2>芋頭籃 (Vasa Basket)</h2>
+                            <p>點擊或拖曳芋頭至窯內（依據受熱點與大小關係排列）</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="taro-basket" id="taro-basket">
+                                <!-- Taro types -->
+                                <div class="taro-card drag-item" draggable="true" data-type="small" id="taro-small">
+                                    <div class="taro-avatar size-s">小芋頭</div>
+                                    <div class="taro-info">
+                                        <span class="taro-name">小芋頭 (aradj-S)</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-cube"></i> 體積: 50 cm³</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-droplet"></i> 水分多、極易烤熟</span>
+                                    </div>
+                                </div>
+
+                                <div class="taro-card drag-item" draggable="true" data-type="medium" id="taro-medium-1">
+                                    <div class="taro-avatar size-m">中芋頭</div>
+                                    <div class="taro-info">
+                                        <span class="taro-name">中芋頭 (aradj-M)</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-cube"></i> 體積: 80 cm³</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-droplet"></i> 水分中等、易熟</span>
+                                    </div>
+                                </div>
+
+                                <div class="taro-card drag-item" draggable="true" data-type="medium" id="taro-medium-2">
+                                    <div class="taro-avatar size-m">中芋頭</div>
+                                    <div class="taro-info">
+                                        <span class="taro-name">中芋頭 (aradj-M)</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-cube"></i> 體積: 80 cm³</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-droplet"></i> 水分中等、易熟</span>
+                                    </div>
+                                </div>
+
+                                <div class="taro-card drag-item" draggable="true" data-type="large" id="taro-large-1">
+                                    <div class="taro-avatar size-l">大芋頭</div>
+                                    <div class="taro-info">
+                                        <span class="taro-name">大芋頭 (aradj-L)</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-cube"></i> 體積: 100 cm³</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-droplet"></i> 質地密實、烘烤耗時</span>
+                                    </div>
+                                </div>
+
+                                <div class="taro-card drag-item" draggable="true" data-type="large" id="taro-large-2">
+                                    <div class="taro-avatar size-l">大芋頭</div>
+                                    <div class="taro-info">
+                                        <span class="taro-name">大芋頭 (aradj-L)</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-cube"></i> 體積: 100 cm³</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-droplet"></i> 質地密實、烘烤耗時</span>
+                                    </div>
+                                </div>
+
+                                <div class="taro-card drag-item" draggable="true" data-type="xlarge" id="taro-xlarge">
+                                    <div class="taro-avatar size-xl">特大芋</div>
+                                    <div class="taro-info">
+                                        <span class="taro-name">特大芋頭 (aradj-XL)</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-cube"></i> 體積: 150 cm³</span>
+                                        <span class="taro-meta"><i class="fa-solid fa-droplet"></i> 水分最多、需極長時間</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="stats-panel mt-3">
+                                <h3>📊 裝載數學計算：</h3>
+                                <div class="stat-row">
+                                    <span>內部可用總容積：</span>
+                                    <strong>484,500 cm³ (0.4855 立方公尺)</strong>
+                                </div>
+                                <div class="stat-row">
+                                    <span>目前裝載芋頭總體積：</span>
+                                    <strong id="loaded-taro-volume">0 cm³</strong>
+                                </div>
+                                <div class="stat-row">
+                                    <span>剩餘可用容積：</span>
+                                    <strong id="remaining-volume">484,500 cm³</strong>
+                                </div>
+                            </div>
+
+                            <!-- Game Status Feedbacks -->
+                            <div class="game-feedback-box" id="game-feedback">
+                                <div class="feedback-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                <div class="feedback-text">
+                                    <h4>排列提示：</h4>
+                                    <p>vuvu 說過：「小芋頭要放在最容易聚熱的位置（中心上方），而體積較大的大芋頭和特大芋頭要放在排氣散熱較慢的兩側邊緣...」</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: QUIZ -->
+            <section id="quiz-tab" class="tab-content">
+                <div class="quiz-container">
+                    <!-- Progress bar -->
+                    <div class="quiz-progress-bar">
+                        <div class="progress-fill" id="quiz-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="card glass-card quiz-card">
+                        <div id="quiz-intro">
+                            <div class="quiz-header text-center">
+                                <i class="fa-solid fa-award quiz-big-icon"></i>
+                                <h2>部落烤芋窯數學大挑戰</h2>
+                                <p>透過 5 題精選題目，檢視你對燒芋窯面積、體積、容積與縮放比例的數學知識！</p>
+                            </div>
+                            <div class="quiz-footer text-center">
+                                <button class="btn btn-primary btn-large" onclick="startQuiz()">
+                                    <i class="fa-solid fa-circle-play"></i> 開始挑戰
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="quiz-question-area" style="display: none;">
+                            <div class="quiz-header">
+                                <span class="question-number" id="question-num">問題 1 / 5</span>
+                                <h3 id="question-text">題目載入中...</h3>
+                                <div class="question-diagram-wrapper" id="question-diagram-container" style="display:none;">
+                                    <canvas id="question-diagram"></canvas>
+                                </div>
+                            </div>
+                            <div class="quiz-body">
+                                <div class="options-list" id="options-container">
+                                    <!-- Options injected here -->
+                                </div>
+                            </div>
+                            <div class="quiz-feedback-box" id="quiz-answer-feedback" style="display: none;">
+                                <div class="quiz-feedback-status">
+                                    <span id="feedback-status-text">回答正確！</span>
+                                </div>
+                                <div class="quiz-feedback-explanation" id="feedback-explanation-text">
+                                    解析內容
+                                </div>
+                                <button class="btn btn-secondary mt-3" id="btn-next-question" onclick="nextQuestion()">
+                                    下一題 <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="quiz-result-area" style="display: none;" class="text-center">
+                            <i class="fa-solid fa-trophy trophy-icon text-gold"></i>
+                            <h2>挑戰完成！</h2>
+                            <p class="result-text">你的分數是：<span id="quiz-score-val">0</span> / 100 分</p>
+                            <p class="result-evaluation" id="evaluation-text">評估中...</p>
+                            <button class="btn btn-primary" onclick="restartQuiz()">
+                                <i class="fa-solid fa-rotate-left"></i> 再試一次
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer text-center animate-fade-in">
+            <p>© 2026 文化數學課程小組 & Antigravity. 基於十二年國教數學領綱(108課綱)設計開發.</p>
+        </footer>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
